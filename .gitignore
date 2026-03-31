@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.db
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+.next/
+out/
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PWA
+sw.js.map
+
+# Logs
+*.log
+npm-debug.log*
