@@ -7,7 +7,6 @@
 ![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
 ![Pandas](https://img.shields.io/badge/Pandas-3.0-150458?logo=pandas)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
