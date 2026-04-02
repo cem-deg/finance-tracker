@@ -46,7 +46,7 @@ export default function InsightsPage() {
   const { data: catDist } = useCategoryDistribution();
   const { categories } = useCategories();
   const { data: monthly } = useMonthlyTotals(3);
-  const { formatAmount } = useCurrency();
+  const { convertAndFormat } = useCurrency();
 
   useEffect(() => {
     setLoading(true);
@@ -92,7 +92,7 @@ export default function InsightsPage() {
       alerts.push({
         icon: <Target size={18} />, bg: "rgba(253,203,110,0.15)", color: "var(--accent-warning)",
         title: `${topCat.name} is ${sortedCats[0].percentage}% of spending`,
-        desc: `Reducing ${topCat.name} by 15% could save you ${formatAmount(savingsTarget)} this month.`,
+        desc: `Reducing ${topCat.name} by 15% could save you ${convertAndFormat(savingsTarget, "USD")} this month.`,
       });
     }
   }
@@ -101,7 +101,7 @@ export default function InsightsPage() {
     alerts.push({
       icon: <AlertTriangle size={18} />, bg: "rgba(162,155,254,0.15)", color: "var(--accent-primary-light)",
       title: "High Average Transaction",
-      desc: `Your average transaction is ${formatAmount(summary?.avg_per_transaction ?? 0)}. Splitting larger purchases could help track spending better.`,
+      desc: `Your average transaction is ${convertAndFormat(summary?.avg_per_transaction ?? 0, "USD")}. Splitting larger purchases could help track spending better.`,
     });
   }
 
@@ -166,7 +166,7 @@ export default function InsightsPage() {
                 <div className="savings-bar" style={{ width: `${s.pct}%`, background: s.color }} />
               </div>
               <div style={{ fontSize: "var(--font-xs)", color: "var(--accent-success)", fontWeight: 600, whiteSpace: "nowrap" }}>
-                <ArrowDown size={12} style={{ display: "inline", verticalAlign: "middle" }} /> {formatAmount(s.potential)}
+                <ArrowDown size={12} style={{ display: "inline", verticalAlign: "middle" }} /> {convertAndFormat(s.potential, "USD")}
               </div>
             </div>
           ))}

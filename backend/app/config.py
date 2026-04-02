@@ -16,6 +16,7 @@ class Settings:
         os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440")
     )
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    EXCHANGE_API_KEY: str = os.getenv("EXCHANGE_API_KEY", "")
     CORS_ORIGINS: list[str] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",

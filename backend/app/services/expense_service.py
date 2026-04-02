@@ -98,6 +98,7 @@ class ExpenseService:
             description=data.description,
             category_id=data.category_id,
             expense_date=data.expense_date,
+            currency_code=data.currency_code,
             user_id=user_id,
         )
         db.add(expense)

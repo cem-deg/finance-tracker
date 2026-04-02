@@ -145,7 +145,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="landing-footer">
-        <p>© {new Date().getFullYear()} Datafle. Built with ❤️ for smarter finances.</p>
+        <p>© {new Date().getFullYear()} Datafle.</p>
       </footer>
     </div>
   );

@@ -12,6 +12,7 @@ class ExpenseCreate(BaseModel):
     description: str
     category_id: int
     expense_date: date
+    currency_code: str = "USD"  # Default to USD
 
 
 class ExpenseUpdate(BaseModel):
@@ -20,6 +21,7 @@ class ExpenseUpdate(BaseModel):
     description: str | None = None
     category_id: int | None = None
     expense_date: date | None = None
+    currency_code: str | None = None
 
 
 class ExpenseResponse(BaseModel):
@@ -29,6 +31,7 @@ class ExpenseResponse(BaseModel):
     description: str
     expense_date: date
     category_id: int
+    currency_code: str
     category: CategoryResponse
     created_at: datetime
     updated_at: datetime

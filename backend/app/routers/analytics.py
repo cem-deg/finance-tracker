@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.user import User
 from app.services.auth_service import get_current_user
+from app.services.exchange_service import exchange_service
 from app.analysis.aggregator import Aggregator
 from app.analysis.predictor import Predictor
 
@@ -70,3 +71,14 @@ def get_category_predictions(
 ):
     """ML-based per-category spending predictions."""
     return Predictor.predict_by_category(db, current_user.id)
+
+
+@router.get("/exchange-rates")
+def get_exchange_rates(base_currency: str = "USD"):
+    """Get current exchange rates relative to base currency."""
+    rates = exchange_service.get_rates(base_currency)
+    return {
+        "base": base_currency,
+        "rates": rates,
+        "cached": exchange_service._cache_time is not None,
+    }

@@ -20,7 +20,7 @@ export default function ExpensesPage() {
 
   const { data, loading, refetch } = useExpenses(params);
   const { categories } = useCategories();
-  const { formatAmount } = useCurrency();
+  const { convertAndFormat } = useCurrency();
   const catMap = new Map(categories.map((c) => [c.id, c]));
 
   // Form state
@@ -161,7 +161,7 @@ export default function ExpensesPage() {
                   <div className="expense-desc">{exp.description}</div>
                   <div className="expense-meta">{cat?.name || "Other"} · {formatDate(exp.expense_date)}</div>
                 </div>
-                <div className="expense-amount">-{formatAmount(exp.amount)}</div>
+                <div className="expense-amount">-{convertAndFormat(exp.amount, exp.currency_code || "USD")}</div>
                 <div className="expense-actions">
                   <button className="btn btn-ghost btn-icon btn-sm" onClick={() => openEdit(exp)} title="Edit">
                     <Edit3 size={15} />

@@ -90,12 +90,12 @@ export default function Sidebar() {
                   <Globe size={14} />
                   <span>{currency.flag} {currency.code}</span>
                 </div>
-                <div style={{ display: "flex", gap: 4, marginTop: "var(--space-sm)" }}>
-                  <button className="btn btn-ghost btn-sm" style={{ flex: 1, fontSize: "var(--font-xs)" }}
+                <div style={{ display: "flex", gap: "var(--space-sm)", marginTop: "var(--space-md)", justifyContent: "center", alignItems: "center" }}>
+                  <button className="btn btn-ghost btn-sm" style={{ flex: 1, fontSize: "var(--font-xs)", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
                     onClick={() => setShowSettings(true)}>
                     <Settings size={14} /> Settings
                   </button>
-                  <button className="btn btn-ghost btn-sm" style={{ color: "var(--accent-danger)", fontSize: "var(--font-xs)" }}
+                  <button className="btn btn-ghost btn-sm" style={{ flex: 1, color: "var(--accent-danger)", fontSize: "var(--font-xs)", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
                     onClick={logout} id="logout-btn">
                     <LogOut size={14} /> Logout
                   </button>
@@ -110,7 +110,7 @@ export default function Sidebar() {
       {showSettings && (
         <div className="modal-overlay" onClick={() => setShowSettings(false)} style={{ zIndex: 1000 }}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-xl)" }}>
               <h2 className="modal-title">Settings</h2>
               <button className="btn btn-ghost btn-icon" onClick={() => setShowSettings(false)}><X size={20} /></button>
             </div>
@@ -134,13 +134,13 @@ export default function Sidebar() {
 
             <div className="settings-section">
               <h3>Theme</h3>
-              <div style={{ display: "flex", gap: "var(--space-sm)" }}>
+              <div style={{ display: "flex", gap: "var(--space-sm)", justifyContent: "center" }}>
                 <button className={`btn ${theme === "dark" ? "btn-primary" : "btn-secondary"}`}
-                  onClick={() => { toggleTheme(); }} style={{ flex: 1 }}>
+                  onClick={() => { toggleTheme(); }} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
                   <Moon size={16} /> Dark
                 </button>
                 <button className={`btn ${theme === "light" ? "btn-primary" : "btn-secondary"}`}
-                  onClick={() => { toggleTheme(); }} style={{ flex: 1 }}>
+                  onClick={() => { toggleTheme(); }} style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
                   <Sun size={16} /> Light
                 </button>
               </div>

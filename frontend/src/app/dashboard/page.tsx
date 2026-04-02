@@ -19,7 +19,7 @@ export default function DashboardPage() {
   const { expenses: recent, loading: recentLoading } = useRecentExpenses(5);
   const { data: monthly, loading: monthlyLoading } = useMonthlyTotals(6);
   const { categories } = useCategories();
-  const { formatAmount } = useCurrency();
+  const { convertAndFormat } = useCurrency();
 
   const catMap = new Map(categories.map((c) => [c.id, c]));
   const topCat = summary?.top_category_id ? catMap.get(summary.top_category_id) : null;
@@ -39,7 +39,7 @@ export default function DashboardPage() {
           </div>
           {summaryLoading ? <div className="skeleton skeleton-heading" /> : (
             <>
-              <div className="stat-value">{formatAmount(summary?.total_this_month ?? 0)}</div>
+              <div className="stat-value">{convertAndFormat(summary?.total_this_month ?? 0, "USD")}</div>
               <div className="stat-label">Spent this month</div>
               <div className={`stat-change ${changeIsPositive ? "negative" : "positive"}`}>
                 {changeIsPositive ? <ArrowUpRight size={14} /> : summary?.month_change_percent === 0 ? <Minus size={14} /> : <ArrowDownRight size={14} />}
@@ -58,7 +58,7 @@ export default function DashboardPage() {
               <div className="stat-value">{summary?.total_transactions ?? 0}</div>
               <div className="stat-label">Transactions</div>
               <div className="stat-change positive" style={{ background: "rgba(0,210,211,0.1)", color: "var(--accent-secondary)" }}>
-                Avg {formatAmount(summary?.avg_per_transaction ?? 0)}
+                Avg {convertAndFormat(summary?.avg_per_transaction ?? 0, "USD")}
               </div>
             </>
           )}
@@ -70,7 +70,7 @@ export default function DashboardPage() {
           </div>
           {summaryLoading ? <div className="skeleton skeleton-heading" /> : (
             <>
-              <div className="stat-value">{formatAmount(summary?.highest_expense ?? 0)}</div>
+              <div className="stat-value">{convertAndFormat(summary?.highest_expense ?? 0, "USD")}</div>
               <div className="stat-label">Highest expense</div>
             </>
           )}
@@ -122,7 +122,7 @@ export default function DashboardPage() {
                       <div className="expense-desc">{exp.description}</div>
                       <div className="expense-meta">{cat?.name || "Other"} · {new Date(exp.expense_date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</div>
                     </div>
-                    <div className="expense-amount">-{formatAmount(exp.amount)}</div>
+                    <div className="expense-amount">-{convertAndFormat(exp.amount, exp.currency_code || "USD")}</div>
                   </div>
                 );
               })

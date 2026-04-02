@@ -1507,7 +1507,7 @@ img { max-width: 100%; display: block; }
 }
 .profile-panel:hover { border-color: var(--glass-border-hover); }
 .profile-expanded {
-  padding: var(--space-sm); margin-top: var(--space-sm);
+  padding: var(--space-md); margin-top: var(--space-md);
   border-top: 1px solid var(--glass-border);
 }
 .profile-detail {
